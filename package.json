@@ -1,7 +1,7 @@
 {
   "name": "the-prestige-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "its the website for prestige international",
   "main": "index.js",
   "scripts": {
     "start": "node backend/index.js",
