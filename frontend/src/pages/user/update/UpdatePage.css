@@ -1,0 +1,55 @@
+.updateDiv {
+    width: min(1500px, 98%);
+    /* width: 100%; */
+
+    /* background-color: red; */
+}
+.updateGrid {
+    /* background-color: green; */
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-auto-rows: min-content;
+
+    grid-gap: 20px;
+    grid-template-areas: 
+    " galleryDiv galleryDiv"
+    " feeDiv bookDiv"
+    " frontImageDiv frontImageDiv"
+    " contactDiv contactDiv"
+
+    
+}
+.mainDiv {
+    background: radial-gradient(#eef0ff, #f9fafa);
+}
+
+.galleryDiv {
+    grid-area: galleryDiv;
+}
+.feeDiv {
+    grid-area: feeDiv;
+    
+}
+.bookDiv {
+    grid-area: bookDiv;
+}
+.frontImageDiv {
+    grid-area: frontImageDiv;
+}
+.contactDiv {
+    grid-area: contactDiv;
+}
+
+@media (max-width:1200px) {
+    .updateGrid {
+        grid-template-areas: 
+        " galleryDiv galleryDiv"
+        " feeDiv feeDiv"
+        " bookDiv bookDiv"
+        " frontImageDiv frontImageDiv"
+        " contactDiv contactDiv"
+    
+        
+    }
+  }
