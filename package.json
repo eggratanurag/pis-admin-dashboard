@@ -1,13 +1,15 @@
+
 {
   "name": "the-prestige-backend",
   "version": "1.0.0",
   "description": "its the website for prestige international",
-  "main": "backend/index.js",
+  "main": "./backend/index.js",
   "type": "module",
   "scripts": {
     "start": "node backend/index.js",
     "local": "nodemon backend/index.js"
   },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
