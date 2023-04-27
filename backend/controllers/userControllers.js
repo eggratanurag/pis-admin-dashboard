@@ -9,7 +9,7 @@ const authUser = asyncHandler(async (req, res) => {
   if (user && password) {
     if (req.session.userId) {
       if (req.session.userId === user.id) {
-        console.log("authenticated", req.session.userId);
+        console.log("authenticated");
         res.status(200).json("authenticated");
       }
     } else {

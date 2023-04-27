@@ -6,6 +6,7 @@ const router = express.Router();
 const cloudinary = require("cloudinary").v2;
 const { extractPublicId } = require("cloudinary-build-url");
 
+
 // Configuration
 
 async function imgUploader(img, type) {
@@ -20,17 +21,32 @@ async function imgUploader(img, type) {
 
   const publicId = (await res).public_id;
 
-  // const extractedPublicId = await extractPublicId(res);
-  //  console.log("extractPublicId", extractedPublicId)
   const url = await cloudinary.url(publicId, {
     secure: true,
-    width: type === "ldImage" ? 1200 : 800, 
-    height:  type === "ldImage" ? 675 : 800,
+    width: type === "ldImage" ? 1200 : 800,
+    height: type === "ldImage" ? 675 : 800,
     crop: "fill",
     fetch_format: "auto",
     quality: "auto",
   });
 
+
+  // async function deleteTempFolder() {
+  //   try {
+  //     const { del } = await import('del');
+  //     await del(['../../tmp']);
+  //     console.log('Temporary folder deleted successfully!');
+  //   } catch (error) {
+  //     console.error('Error deleting temporary folder:', error);
+  //   }
+  // }
+
+  // if (url) {
+  //   console.log("url exists")
+  //   deleteTempFolder();
+  //   // Delete the temporary folder and its contents automatically
+
+  // }
   return url;
 }
 async function pdfUploader(pdf) {
@@ -45,8 +61,6 @@ async function pdfUploader(pdf) {
 
   const publicId = (await res).public_id;
 
-  // const extractedPublicId = await extractPublicId(res);
-  //  console.log("extractPublicId", extractedPublicId)
   const url = cloudinary.url(publicId, {
     secure: true,
     transformation: [
@@ -55,6 +69,21 @@ async function pdfUploader(pdf) {
       { background: "black" },
     ],
   });
+  // if (url) {
+  //   console.log("url exists")
+  //   // Delete the temporary folder and its contents automatically
+  //   import('del')
+  //   .then(del => {
+  //     // Call the del() function to delete files or directories
+  //     return del(['../../tmp']);
+  //   })
+  //   .then(paths => {
+  //     console.log('Temporary folder deleted:', paths);
+  //   })
+  //   .catch(err => {
+  //     console.error('Error deleting temporary folder:', err);
+  //   });
+  // }
 
   return url;
 }
@@ -74,7 +103,7 @@ router.put("/gallery", sessionChecker, async (req, res) => {
   try {
     const image = await req.files.image;
     const imgUrl = await imgUploader(image.tempFilePath, "gallery");
-    console.log(imgUrl)
+    console.log(imgUrl);
     const result = await User.updateOne(
       { _id: req.session.userId },
       { $push: { gallery: { $each: [imgUrl], $slice: -8 } } },
@@ -93,7 +122,7 @@ router.put("/landing-page-image", sessionChecker, async (req, res) => {
   try {
     const image = await req.files.image;
     const imgUrl = await imgUploader(image.tempFilePath, "ldImage");
-    console.log(imgUrl)
+    console.log(imgUrl);
     const result = await User.updateOne(
       { _id: req.session.userId },
       { $push: { frontImages: { $each: [imgUrl], $slice: -4 } } },

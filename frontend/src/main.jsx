@@ -7,8 +7,10 @@ import { PublicDataProvider } from "./context/DataProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-axios.defaults.baseURL = "https://creepy-bee-garment.cyclic.app"
-// console.log(import.meta.env.VITE_BASE_URL)
+
+console.log(process.env.NODE_ENV)
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "https://creepy-bee-garment.cyclic.app" :  "http://localhost:5000";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
