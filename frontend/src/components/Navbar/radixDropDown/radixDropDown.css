@@ -17,7 +17,7 @@ p {
     justify-content: left;
     max-width: auto;
     width: 100%;
-  z-index: 1;
+    /* z-index: 1; */
 }
 
 .NavigationMenuList {
@@ -225,6 +225,7 @@ p {
   width: auto;
   width: 100%;
   top: 100%;
+  z-index: 10;
   perspective: 2000px;
 }
 

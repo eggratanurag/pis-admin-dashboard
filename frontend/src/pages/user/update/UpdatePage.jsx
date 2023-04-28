@@ -20,7 +20,7 @@ const UpdatePage = () => {
   const { email, phone1, phone2, address, facebook, instagram, twitter } =  publicData?.contactDetails || {};
 
 
-  console.log(query)
+
   function handleDelete (id) {
     
     staffMemberDeleteMut.mutate(id)

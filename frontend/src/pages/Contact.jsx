@@ -11,6 +11,7 @@ const Contact = () => {
     const [text, setText] = useState("send")
     const {publicData, setPublicData} = PublicDataState();
 
+    console.log(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID)
     const sendEmail = (e) => {
       e.preventDefault();
       // setText("Message has been sent");

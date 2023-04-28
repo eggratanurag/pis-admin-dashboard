@@ -7,7 +7,8 @@ import { HashLink } from "react-router-hash-link";
 import "./radixDropDown.css";
 import { Link, useLocation } from "react-router-dom";
 
-const radixNavigationMenu = () => {
+const radixNavigationMenu = ({DisclosureButton}) => {
+
   let location = useLocation().pathname;
   return (
     <NavigationMenu.Root className='NavigationMenuRoot'>
@@ -30,7 +31,7 @@ const radixNavigationMenu = () => {
             <ul className='List one'>
 
               {Drop1Routes().filter(item => item.href).map(item => (
-
+          
                    <Link
                    key={item.name}
                    title='About us'
@@ -48,9 +49,10 @@ const radixNavigationMenu = () => {
                   <span className='ListItemText'>{item.description}</span>
                  </Link>
                
+               
               ))}
                {Drop1Routes().filter(item => item.section).map(item => (
-                   
+              
                    <HashLink
                    key={item.name}
                    title='About us'
@@ -61,6 +63,7 @@ const radixNavigationMenu = () => {
                  <span className='ListItemText'>{item.description}</span>
                
                  </HashLink>
+               
                
               ))}
             
