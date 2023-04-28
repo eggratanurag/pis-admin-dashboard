@@ -31,22 +31,6 @@ async function imgUploader(img, type) {
   });
 
 
-  // async function deleteTempFolder() {
-  //   try {
-  //     const { del } = await import('del');
-  //     await del(['../../tmp']);
-  //     console.log('Temporary folder deleted successfully!');
-  //   } catch (error) {
-  //     console.error('Error deleting temporary folder:', error);
-  //   }
-  // }
-
-  // if (url) {
-  //   console.log("url exists")
-  //   deleteTempFolder();
-  //   // Delete the temporary folder and its contents automatically
-
-  // }
   return url;
 }
 async function pdfUploader(pdf) {
@@ -69,35 +53,11 @@ async function pdfUploader(pdf) {
       { background: "black" },
     ],
   });
-  // if (url) {
-  //   console.log("url exists")
-  //   // Delete the temporary folder and its contents automatically
-  //   import('del')
-  //   .then(del => {
-  //     // Call the del() function to delete files or directories
-  //     return del(['../../tmp']);
-  //   })
-  //   .then(paths => {
-  //     console.log('Temporary folder deleted:', paths);
-  //   })
-  //   .catch(err => {
-  //     console.error('Error deleting temporary folder:', err);
-  //   });
-  // }
+
 
   return url;
 }
 
-// router.post("/fee-structure", sessionChecker, async (req, res) => {
-//   const user = await User.findById(req.session.userId);
-//   res.status(200).json({
-//     gallery: user.gallery,
-//     feeStructure: user.feeStructure,
-//     booklist: user.booklist,
-//     frontImages: user.frontImages,
-//     staffInfo: user.staffInfo,
-//   });
-// });
 
 router.put("/gallery", sessionChecker, async (req, res) => {
   try {
@@ -114,7 +74,7 @@ router.put("/gallery", sessionChecker, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).json(e);
+    res.status(400).json("something went wrong");
   }
 });
 
@@ -133,7 +93,7 @@ router.put("/landing-page-image", sessionChecker, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).json(e);
+    res.status(400).json("something went wrong");
   }
 });
 
@@ -214,7 +174,7 @@ router.put("/staff-member", sessionChecker, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).json(e);
+    res.status(400).json("something went wrong");
   }
 });
 
@@ -231,8 +191,6 @@ router.put("/staff-member/edit", sessionChecker, async (req, res) => {
       memberData = req.body;
     }
 
-    console.log(memberData);
-    console.log(req.body);
 
     const result = await User.updateOne(
       { _id: req.session.userId, "staffInfo.id": memberData.id },
@@ -244,7 +202,7 @@ router.put("/staff-member/edit", sessionChecker, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).json(e);
+    res.status(400).json("something went wrong");
   }
 });
 
@@ -261,7 +219,7 @@ router.put("/staff-member/delete", sessionChecker, async (req, res) => {
     }
   } catch (e) {
     console.log(e);
-    res.status(400).json(e);
+    res.status(400).json("something went wrong");
   }
 });
 

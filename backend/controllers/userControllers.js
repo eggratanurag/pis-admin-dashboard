@@ -18,12 +18,12 @@ const authUser = asyncHandler(async (req, res) => {
         req.session.userId = user.id;
         res.status(200).json(user.id);
       } else {
-        res.status(401);
-        throw new Error("Invalid Email or Password");
+        
+        res.status(403).json("Invalid Email or Password");
       }
     }
   } else {
-    res.status(401).json({ message: "email doesnt exist" });
+    res.status(401).json("email doesnt exist");
   }
 });
 

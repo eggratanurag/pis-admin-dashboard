@@ -2,7 +2,7 @@ import React , {useState} from 'react';
 import PlayToast from '../../components/Toast';
 import {loginMutProvider} from '../../Api/Mutations';
 import schoolLogo from '../../assets/images/schoolLogo.png';
-
+import Loader from '../../components/Loader';
 
 
  function Login() {
@@ -89,22 +89,15 @@ import schoolLogo from '../../assets/images/schoolLogo.png';
                 </label>
               </div>
 
-              {/* <div className="text-sm">
-                <a href="#" className="font-medium text-[#747cf4] hover:text-indigo-500">
-                  Forgot your password?
-                </a>
-              </div> */}
             </div>
 
             <div>
               <button
                 type="submit"
-                className="group relative flex w-full justify-center rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="group relative h-5 flex w-full justify-center rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                 
-                </span>
-                Sign in
+
+                {loginMut.isLoading ? <Loader /> : "Sign in"}
               </button>
             </div>
           

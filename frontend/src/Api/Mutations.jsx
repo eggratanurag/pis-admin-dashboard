@@ -17,7 +17,7 @@ function loginMutProvider() {
     const loginMut = useMutation({
         mutationFn: LoginFn,
         onSuccess: (data) => {
-          // console.log(data)
+
           Cookies.set('faffyDuck', data, { expires: oneHour, SameSite:"None", secure: true  }, );
           Navigate('/update-page')
           PlayToast('Logged In', "success")

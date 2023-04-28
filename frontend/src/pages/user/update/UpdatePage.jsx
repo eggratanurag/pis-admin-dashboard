@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from "../../../components/Card";
 import { PublicDataState } from "../../../context/DataProvider";
 import ImageForm from "../../../components/ImageForm";
@@ -16,13 +16,15 @@ const UpdatePage = () => {
   const staffMemberMut = staffMemberMutProvider()
   const staffMemberDeleteMut = staffMemberDeleteMutProvider()
   const { publicData, setPublicData } = PublicDataState();
+  const [query, setQuery] = useState('');
   const { email, phone1, phone2, address, facebook, instagram, twitter } =  publicData?.contactDetails || {};
 
 
+  console.log(query)
   function handleDelete (id) {
     
     staffMemberDeleteMut.mutate(id)
-    // staffMemberMut.mutate({memberData, image})
+
    }
   return (
     <div className='mainDiv w-full min-h-screen py-16 '>
@@ -34,14 +36,20 @@ const UpdatePage = () => {
           <EditStaffDialogue type="create" />
 
           <div className=" relative   text-gray-600 ml-5 w-full">
-            <input className=" w-full rounded-xl focus:ring-0 border-2  border-gray-300 bg-white h-10 px-5 pr-16  text-sm focus:border-[#a4acf4] "
-             type="search" name="search" placeholder="Search"/>
+            <input 
+             onChange={e=> setQuery(e.target.value)}
+              className=" w-full rounded-xl focus:ring-0 border-2  border-gray-300 bg-white h-10 px-5   text-sm focus:border-[#a4acf4] "
+             type="search" name="search" placeholder="Search by name..."/>
            </div>
 
           </div>
            
           {publicData ? 
-          (publicData?.staffInfo?.map((info, index) => (
+          (publicData?.staffInfo?.filter(item => 
+            query ? 
+            item.name.toLowerCase().includes(query.toLowerCase()) : 
+            item)
+          .map((info, index) => (
             <React.Fragment key={index}>
               <Card props={info} handleDelete={handleDelete} />
             </React.Fragment>

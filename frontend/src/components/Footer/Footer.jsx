@@ -115,7 +115,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='bg-[#495C83] p-6 text-center'>
-        <span>©{new Date().getFullYear()} Copyright: </span>
+        <span>{new Date().getFullYear()} </span>
         <a
           className='font-semibold  text-neutral-400'
           href='https://tailwind-elements.com/'
