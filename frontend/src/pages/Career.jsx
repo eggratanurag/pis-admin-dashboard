@@ -1,6 +1,31 @@
-import React from "react";
+import React, {useRef, useState} from "react";
+import Loader from "../components/Loader";
+import emailjs from "@emailjs/browser";
 
 const Career = () => {
+  const form2 = useRef();
+  const [loading, setLoading] = useState(false)
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_CAREER_TEMPLATE_ID,
+        form2.current,
+        import.meta.env.VITE_PUBLIC_KEY,
+      )
+      .then(
+        (result) => {
+          setLoading(false);
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        },
+      );
+  };
   return (
     <div className='updateDiv mx-auto py-12'>
       <section className='bg-white'>
@@ -14,7 +39,7 @@ const Career = () => {
               your Interest.
             </h1>
           </div>
-          <form action='#' className='space-y-8'>
+          <form ref={form2} onSubmit={sendEmail} className='space-y-8'>
             <div>
               <label
                 htmlFor='careerName'
@@ -23,6 +48,7 @@ const Career = () => {
                 Your Name
               </label>
               <input
+                name='user_name'
                 type='text'
                 id='careerName'
                 className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#a4acf4] focus:border-[#a4acf4] block w-full p-2.5'
@@ -38,6 +64,7 @@ const Career = () => {
                 Your email
               </label>
               <input
+                name='user_email'
                 type='email'
                 id='careerEmail'
                 className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#a4acf4] focus:border-[#a4acf4] block w-full p-2.5'
@@ -53,10 +80,11 @@ const Career = () => {
                 Your phone number
               </label>
               <input
+                name='phone'
                 type='tel'
                 id='careerTel'
                 className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#a4acf4] focus:border-[#a4acf4] block w-full p-2.5'
-                  placeholder='***********'
+                placeholder='***********'
                 required
               />
             </div>
@@ -68,6 +96,7 @@ const Career = () => {
                 address
               </label>
               <input
+                name='address'
                 type='text'
                 id='CareerAddress'
                 className='block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-[#a4acf4] focus:border-[#a4acf4]'
@@ -83,17 +112,19 @@ const Career = () => {
                 Your message
               </label>
               <textarea
+                name='message'
                 id='CareerMessage'
                 rows='6'
                 className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-[#a4acf4] focus:border-[#a4acf4]'
                 placeholder='Leave a comment...'
+                required
               ></textarea>
             </div>
             <button
               type='submit'
-              className='py-3 px-5 text-sm font-medium text-center bg-[#a4acf4] hover:bg-[#747cf4] text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-[#6c64f8] '
+              className='py-3 h-5 px-5 text-sm font-medium text-center bg-[#747cf4] hover:bg-[#6c64f8] text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-2 focus:outline-none focus:ring-[#574eff] '
             >
-              Send message
+             {loading? <Loader /> : "Send message"}
             </button>
           </form>
         </div>

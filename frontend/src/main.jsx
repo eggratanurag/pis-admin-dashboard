@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "https://creepy-bee-garment.cyclic.app" :  "http://localhost:5000";
+axios.defaults.baseURL = process.env.NODE_ENV === "production" ? import.meta.env.VITE_BASE_URL :  import.meta.env.VITE_LOCAL_URL;
 
 const queryClient = new QueryClient({
   defaultOptions: {

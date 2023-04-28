@@ -5,26 +5,27 @@ import emailjs from "@emailjs/browser";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import {PublicDataState} from "../context/DataProvider";
+import Loader from "../components/Loader";
 
 const Contact = () => {
   const form = useRef();
-    const [text, setText] = useState("send")
+    const [loading, setLoading] = useState(false)
     const {publicData, setPublicData} = PublicDataState();
 
-    console.log(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID)
+
     const sendEmail = (e) => {
       e.preventDefault();
-      // setText("Message has been sent");
+      setLoading(true);
       emailjs
         .sendForm(
           import.meta.env.VITE_SERVICE_ID,
-          import.meta.env.VITE_TEMPLATE_ID,
+          import.meta.env.VITE_CONTACT_TEMPLATE_ID,
           form.current,
           import.meta.env.VITE_PUBLIC_KEY,
         )
         .then(
           (result) => {
-            // setText("Send another message");
+            setLoading(false);
             e.target.reset();
           },
           (error) => {
@@ -98,9 +99,9 @@ const Contact = () => {
               <button
                 type='submit'
                 value='send'
-                className='py-3 px-5 text-sm font-medium text-center bg-[#a4acf4] hover:bg-[#747cf4] text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 '
+                className='py-3 px-5 h-5 text-sm font-medium text-center  bg-[#747cf4] hover:bg-[#6c64f8] text-white rounded-lg sm:w-fit  focus:ring-2 focus:outline-none focus:ring-[#574eff] '
               >
-                {text}
+                {loading ? <Loader /> : "Send Message"}
               </button>
             </form>
           </div>
