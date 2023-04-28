@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import Loader from "../components/Loader";
 import emailjs from "@emailjs/browser";
+import PlayToast from "../components/Toast";
 
 const Career = () => {
   const form2 = useRef();
@@ -19,10 +20,12 @@ const Career = () => {
       .then(
         (result) => {
           setLoading(false);
+          PlayToast('Sent', "success");
           e.target.reset();
         },
         (error) => {
-          console.log(error.text);
+          PlayToast('Sent', "success");
+          // console.log(error.text);
         },
       );
   };

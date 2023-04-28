@@ -1,13 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-// import { useQuery, useMutation } from "@tanstack/react-query";
-// import { getPublicData } from "../Api/Apis";
 
 const publicDataContext = createContext();
 
 const PublicDataProvider = ({ children }) => {
   const [publicData, setPublicData] = useState();
- console.log(publicData)
+
     async function getPublicData () {
        
       try {    

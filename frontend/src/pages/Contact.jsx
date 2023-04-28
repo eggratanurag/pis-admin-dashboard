@@ -6,6 +6,8 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import {PublicDataState} from "../context/DataProvider";
 import Loader from "../components/Loader";
+import PlayToast from "../components/Toast";
+
 
 const Contact = () => {
   const form = useRef();
@@ -26,10 +28,12 @@ const Contact = () => {
         .then(
           (result) => {
             setLoading(false);
+            PlayToast('Sent', "success");
             e.target.reset();
           },
           (error) => {
-            console.log(error.text);
+            PlayToast('Cannot send!!', "error");
+            // console.log(error.text);
           },
         );
     };

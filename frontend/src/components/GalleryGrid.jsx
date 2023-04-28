@@ -4,7 +4,7 @@ import Loader from "../components/Loader";
 
 const GalleryGrid = () => {
   const { publicData, setPublicData } = PublicDataState();
-  console.log(publicData);
+
   return (
     <div className='grid place-items-center w-full min-h-screen '>
       {/* <!-- Responsive Grid Layout --> */}

@@ -7,8 +7,6 @@ import Cookies from 'js-cookie';
 import {PublicDataState} from '../context/DataProvider';
 import blankPfp from '../assets/images/blankPfp.png';
 
-// const name = Cookies.get('faffyDuck');
-// console.log(name)
 
 function loginMutProvider() {
 
