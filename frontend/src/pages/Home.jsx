@@ -27,7 +27,7 @@ const Home = () => {
           <div className='absolute left-2 md:left-96 top-40 w-96 h-72 bg-[#f9e8ff] rounded-full opacity-70 mix-blend-multiply filter blur-xl'></div>
           <h1 className='text-4xl sm:text-7xl font-bold mb-16 leading-10  sm:leading-tight '>
             Welcome to <br />
-            Prestiga International School
+            Prestige International School
           </h1>
           Our school is a vibrant and dynamic learning community that is
           dedicated to providing high-quality education to students from diverse
