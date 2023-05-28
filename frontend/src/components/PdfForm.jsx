@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Loader from "./Loader";
-import {feeStructureMutProvider, bookListMutProvider} from "../Api/Mutations";
+import {feeStructureMutProvider, bookListMutProvider} from "../api/Mutations";
 
 
 const PdfForm = ({props, title, type}) => {
@@ -64,7 +64,7 @@ const PdfForm = ({props, title, type}) => {
 
         <button
           type='submit'
-          className='h-5 px-5 ml-auto group relative flex w-auto justify-center disabled:bg-[#caceff] rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='h-9 px-5 ml-auto group relative flex w-auto justify-center disabled:bg-[#caceff] rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           disabled={(pdf && !feeStructureMut.isLoading && !booklistMut.isLoading)? false : true}
           onClick={type === "fees" ? handleFee : handleBookList}
          

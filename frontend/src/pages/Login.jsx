@@ -1,8 +1,8 @@
 import React , {useState} from 'react';
-import PlayToast from '../../components/Toast';
-import {loginMutProvider} from '../../Api/Mutations';
-import schoolLogo from '../../assets/images/schoolLogo.png';
-import Loader from '../../components/Loader';
+import PlayToast from '../components/Toast';
+import {loginMutProvider} from '../api/Mutations';
+import schoolLogo from '../assets/images/schoolLogo.png';
+import Loader from '../components/Loader';
 
 
  function Login() {
@@ -26,7 +26,7 @@ import Loader from '../../components/Loader';
     <>
      
       <div className="flex  min-h-screen  justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <p className='absolute right-2 top-20'>only for authority</p>
+        
         <div
          className="w-full mt-32 max-w-md space-y-8 ">
           <div>
@@ -94,7 +94,7 @@ import Loader from '../../components/Loader';
             <div>
               <button
                 type="submit"
-                className="group relative h-5 flex w-full justify-center rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="group relative h-9 flex w-full justify-center rounded-md bg-[#747cf4]  py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
 
                 {loginMut.isLoading ? <Loader /> : "Sign in"}

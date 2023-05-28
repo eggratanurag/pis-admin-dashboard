@@ -4,7 +4,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import PlayToast from '../components/Toast';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import {PublicDataState} from '../context/DataProvider';
+import PublicDataState from '../context/DataProvider';
 import blankPfp from '../assets/images/blankPfp.png';
 
 
@@ -117,6 +117,7 @@ function editStaffMemberMutProvider() {
       });
   return editStaffMemberMut;
 }
+
 function staffMemberDeleteMutProvider() {
   const { publicData, setPublicData } = PublicDataState();
 

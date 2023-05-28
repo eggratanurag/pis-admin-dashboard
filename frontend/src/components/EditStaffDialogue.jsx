@@ -3,7 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import EditIcon from '@mui/icons-material/Edit';
 import blankPfp from '../assets/images/blankPfp.png';
-import {staffMemberMutProvider, editStaffMemberMutProvider} from '../Api/Mutations';
+import {staffMemberMutProvider, editStaffMemberMutProvider} from '../api/Mutations';
 import Loader from './Loader';
 import "./EditStaffDialogue.css"
 
@@ -31,6 +31,7 @@ const EditDialogue = ({props ,type}) => {
  function handleSave () {
   staffMemberMut.mutate({memberData, image, setMemberData, setImage}, {onSuccess: () => {
     setOpen(false)
+   
   }})
 
   
@@ -39,6 +40,7 @@ const EditDialogue = ({props ,type}) => {
 
   return function () {editStaffMemberMut.mutate({memberData, image, setMemberData, setImage}, {onSuccess: () => {
     setOpen(false)
+  
   }})}
   
  }
@@ -145,7 +147,7 @@ const EditDialogue = ({props ,type}) => {
         <div className="mt-[25px] flex justify-end">
 
             <button onClick={type=== "edit" ?  handleEdit(props?.id) : handleSave }
-            disabled={(!memberData.name || !memberData.qualification || !memberData.subject || !memberData.role || staffMemberMut.isLoading || editStaffMemberMut.isLoading) ? true : false}
+            disabled={(!memberData.name || !memberData.qualification || !memberData.role || staffMemberMut.isLoading || editStaffMemberMut.isLoading) ? true : false}
              className="bg-green4 w-24 text-green11 disabled:text-gray-300 disabled:bg-green4 hover:bg-green5 focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none">
               { (staffMemberMut.isLoading || editStaffMemberMut.isLoading) ? <Loader color="#44924c" /> : "Save"}
             </button>

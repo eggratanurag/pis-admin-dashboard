@@ -33,7 +33,7 @@ app.use(
     secret: process.env.SESSION,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, maxAge: 60 * 60 * 1000, },
+    cookie: { secure: false, maxAge: 60 * 60 * 1000},
     store: MongoStore.create({
       mongoUrl: process.env.MONGO_URI,
     }),
@@ -47,6 +47,8 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+
+
 
 app.post("/api/user/login", authUser);
 app.get("/data", PublicData);

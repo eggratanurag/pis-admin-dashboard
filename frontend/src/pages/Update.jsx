@@ -1,16 +1,16 @@
 import React, {useState} from "react";
-import Card from "../../../components/Card";
-import { PublicDataState } from "../../../context/DataProvider";
-import ImageForm from "../../../components/ImageForm";
-import ImageForm2 from "../../../components/ImageForm2";
-import Loader from "../../../components/Loader";
-import PdfForm from "../../../components/PdfForm";
-import EditContactDialogue from "../../../components/EditContactDialogue";
-import EditStaffDialogue from "../../../components/EditStaffDialogue";
+import Card from "../components/Card";
+import PublicDataState from "../context/DataProvider";
+import ImageForm from "../components/ImageForm";
+import ImageForm2 from "../components/ImageForm2";
+import Loader from "../components/Loader";
+import PdfForm from "../components/PdfForm";
+import EditContactDialogue from "../components/EditContactDialogue";
+import EditStaffDialogue from "../components/EditStaffDialogue";
 import SearchIcon from '@mui/icons-material/Search';
-import {staffMemberMutProvider, staffMemberDeleteMutProvider} from "../../../Api/Mutations";
+import {staffMemberMutProvider, staffMemberDeleteMutProvider} from "../api/Mutations";
 
-import "./UpdatePage.css";
+import "./Update.css";
 
 const UpdatePage = () => {
   const staffMemberMut = staffMemberMutProvider()

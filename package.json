@@ -4,8 +4,8 @@
   "description": "its the website for prestige international",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/index.js",
-    "local": "nodemon backend/index.js"
+    "start": "node index.js",
+    "local": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +23,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "mongoose": "^6.8.3",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "source-map-loader": "^4.0.1"
   }
 }

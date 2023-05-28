@@ -2,8 +2,8 @@ import React,{useState, useEffect} from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import EditIcon from '@mui/icons-material/Edit';
-import {PublicDataState} from '../context/DataProvider';
-import {contactMutProvider} from '../Api/Mutations';
+import PublicDataState from '../context/DataProvider';
+import {contactMutProvider} from '../api/Mutations';
 
 
 const EditContactDialogue = () => {

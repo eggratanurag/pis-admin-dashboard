@@ -6,7 +6,7 @@ const ProtectedRoute = ({Component}) => {
     const faffyDuckCookie = Cookies.get('faffyDuck');
     return (
     
-        faffyDuckCookie ?  <Component /> : <Navigate to='/login' />
+        faffyDuckCookie ?  <Component /> : <Navigate to='/' />
       
     );
 }

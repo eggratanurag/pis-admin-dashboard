@@ -34,7 +34,7 @@ const Card = ({ props, type, handleDelete }) => {
 
         <p className='xs:mb-5 block font-light text-gray-700 '>{role}</p>
         <p className=' block font-light text-gray-500 '>{qualification}</p>
-        <p className=' block font-light text-gray-500 '>Sub - {subject}</p>
+        <p className=' block font-light text-gray-500 '>{subject && `Sub - ${subject}`}</p>
       </div>
 
       </div>
