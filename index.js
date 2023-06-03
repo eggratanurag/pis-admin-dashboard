@@ -42,7 +42,7 @@ app.use(
 
 var corsOptions = {
   credentials: true,
-  origin: process.env.CLIENT_URL,
+  origin: process.env.CORS_URL,
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
