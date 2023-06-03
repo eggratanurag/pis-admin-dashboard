@@ -11,7 +11,6 @@ import React from 'react';
 
 const Loader = ({color}) => {
   let [loading, setLoading] = useState(true);
-  // let [color, setColor] = useState(colors ?? "#a4acf4");
     return (
         <BarLoader
         color={color ?? "#a4acf4"}
